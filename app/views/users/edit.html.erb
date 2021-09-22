@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+
+    <h1>User info</h1>
+    <%= render 'books/eroor', book: @user %>
+
+    <%= form_with model:@user, local:true do |f| %>
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"user name", class:"form-control" %>
+      </div>
+
+      <div class="form-group">
+        <div><label for="inputImage">Image</label></div>
+        <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+      </div>
+
+      <div class="form-group">
+        <div><label for="inputintroduction">Intoduction</label></div>
+        <%= f.text_area :introduction, autofocus: true, id:"inputintroduction", placeholder:"introduction", class:"form-control" %>
+      </div>
+
+      <%= f.submit "Update User", class:"btn btn-secondary" %>
+    <% end %>
+    </div>
+  </div>
+</div>

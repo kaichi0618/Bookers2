@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    <h1>User info</h1>
+    <%= attachment_image_tag @user, :profile_image, size: '100x100', format: 'jpeg', fallback: "no_image.jpg" %>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    </table>
+        <div>
+        <% if @user.id == current_user.id %>
+          <%= link_to edit_user_path(@user),class:"btn btn-secondary btn-block" do %>
+            <i class="fa fa-user"></i>
+          <% end %>
+        <% end %>
+        </div>
+    <%= render 'books/book', book: @newbook %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+    <h1>Book detail</h1>
+      <table class="table">
+        <tr>
+          <td>
+            <%= attachment_image_tag @user, :profile_image, size: '100x100', format: 'jpeg', fallback: "no_image.jpg" %><br/>
+            <%= @book.user.name %>
+          </td>
+          <td><%= @book.title %></td>
+          <td><%= @book.opinion %></td>
+
+           <% if @book.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path, class:"btn btn-success" %></td>
+            <td><%= link_to "Destroy", book_path(@book.id), method: :delete, class:"btn btn-danger" %></td>
+           <% end %>
+        </tr>
+      </table>
+  </div>
+</div>
