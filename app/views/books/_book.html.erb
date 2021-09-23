@@ -1,10 +1,16 @@
 
-  <h1>New Book</h1>
+  <h1>New book</h1>
 <%= form_with model:book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :opinion %>
-  <%= f.submit 'Create Book' %>
+  <div class="form-group">
+    <label for="inputtitle">Title</label>
+    <%= f.text_field :title, autofocus: true, id:"inputtitle", class:"form-control" %>
+  </div>
+  <div class="form-group">
+    <label for="inputopinion">Opinion</label>
+    <%= f.text_area :body, autofocus: true, id:"inputopinion",  class:"form-control" %>
+  </div>
+  <%= f.submit 'Create Book', class:"btn btn-success" %>
 <% end %>
+
+
 
